@@ -38,7 +38,3 @@ jobs:
         BRANCH: gh-pages
         FOLDER: dist/Web/wwwroot
 
-    # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to DiegoG.DevSite
-      run: sed -i 's/<base href="\/" \/>/<base href="\/DiegoG.DevSite\/" \/>/g' dist/Web/wwwroot/index.html
-          
