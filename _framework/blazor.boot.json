@@ -1,9 +1,9 @@
 {
   "mainAssemblyName": "DiegoG.WebTools",
   "resources": {
-    "hash": "sha256-G2FciPa4dicIslCDPXZeBtUZ4P1cjw7o5gvjcrZKyZ8=",
+    "hash": "sha256-JnoSXuLEpXWicpyZfRwd/5+z/YfX2DE1015cJaAlnGg=",
     "fingerprinting": {
-      "DiegoG.WebTools.gy7drt6h31.wasm": "DiegoG.WebTools.wasm",
+      "DiegoG.WebTools.enpi36kr8i.wasm": "DiegoG.WebTools.wasm",
       "Markdig.tosia6zai6.wasm": "Markdig.wasm",
       "Microsoft.AspNetCore.Components.Forms.paab7a530z.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
       "Microsoft.AspNetCore.Components.63ymyf5lnj.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -88,7 +88,7 @@
       "System.Runtime.InteropServices.JavaScript.3uvku0ibnu.wasm": "sha256-K5wa4QwWB8A0OrHM4yWK86Nl6ItEv9c3ctAASLMYLKo="
     },
     "assembly": {
-      "DiegoG.WebTools.gy7drt6h31.wasm": "sha256-eGe6qDd0xYKt1dj/iA1gbRdiBxp+64elVekOTGO44WY=",
+      "DiegoG.WebTools.enpi36kr8i.wasm": "sha256-pvK3lGb/AAGo9tY15fgldQpeFzr90rnjCj4NZnwK0Gw=",
       "Markdig.tosia6zai6.wasm": "sha256-Q8xKR/WvOpfiNK6in6cZ9XtquIArOEv7Bi93hrMhvAQ=",
       "Microsoft.AspNetCore.Components.Forms.paab7a530z.wasm": "sha256-Hxi4RVzxumy77zl8fmKCUk+KSex+d3MY7BfE0nKI9bo=",
       "Microsoft.AspNetCore.Components.63ymyf5lnj.wasm": "sha256-EuRQ6/ZzJkQT3gkJ8AufQXCHWnJiLmAnc89JODL2a7M=",
