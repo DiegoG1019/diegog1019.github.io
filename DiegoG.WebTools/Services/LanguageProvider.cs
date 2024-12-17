@@ -6,8 +6,8 @@ public sealed class LanguageProvider : INotifyPropertyChanged
 {
     private static readonly PropertyChangedEventArgs changedArgs = new(nameof(CurrentLanguage));
 
-    private LanguageItems _currentLanguage = AvailableLanguages.English;
-    public LanguageItems CurrentLanguage
+    private Language _currentLanguage = AvailableLanguages.English;
+    public Language CurrentLanguage
     {
         get => _currentLanguage;
         set

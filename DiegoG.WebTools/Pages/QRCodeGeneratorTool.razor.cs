@@ -27,6 +27,17 @@ public partial class QRCodeGeneratorTool
         File = e.File;
     }
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Language.PropertyChanged += Language_PropertyChanged;
+    }
+
+    private void Language_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+
     public Task HandleRequestSubmission()
         => GenerateNewQR();
 
@@ -64,7 +75,6 @@ public partial class QRCodeGeneratorTool
         {
             ArrayPool<byte>.Shared.Return(rented);
         }
-
 
         Logger.LogInformation("QR Code Succesfully generated");
     }
