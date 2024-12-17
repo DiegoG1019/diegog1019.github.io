@@ -27,6 +27,28 @@ public sealed class LanguageItems
 
 public static class AvailableLanguages
 {
+    public static LanguageItems Español { get; } = new LanguageItems()
+    {
+        LanguageName = "es",
+        AboutMeUri = "https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/README.md",
+        AboutMe = "Sobre Mí",
+        CVUri = "/Diego CV - ESPAÑOL - DEC24.pdf",
+        Home = "Principal",
+        QRCodeGen = "Generador de QRs",
+        SiteTitle = "Ingr. Dev DiegoG y Herramientas",
+        ShortSiteTitle = "Dev DiegoG",
+        QRContent = "Contenido: ",
+        QRPPM = "Píxeles por Módulo: ",
+        QRECC = "ECC: ",
+        QRECIMode = "Modo Eci: ",
+        QRForceUTF8 = "Forzar UTF-8? ",
+        QRUTF8Bom = "Incluir el BOM en UTF-8? ",
+        QRRequestedVersion = "Version de Código QR: ",
+        SubmitButton = "Generar",
+        NotFoundTitle = "No Encontrado",
+        NotFoundMessage = "Lo siento, no hay nada en esta dirección"
+    };
+
     public static LanguageItems English { get; } = new LanguageItems()
     {
         LanguageName = "en",
@@ -38,7 +60,7 @@ public static class AvailableLanguages
         SiteTitle = "Dev Engr. DiegoG & Tools",
         ShortSiteTitle = "Dev DiegoG",
         QRContent = "Content: ",
-        QRPPM = "PPM: ",
+        QRPPM = "Pixels per Module: ",
         QRECC = "ECC: ",
         QRECIMode = "Eci Mode: ",
         QRForceUTF8 = "Force UTF8? ",
