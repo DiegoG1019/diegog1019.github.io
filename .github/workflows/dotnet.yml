@@ -21,11 +21,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
          
-    - name: Restore dependencies
-      run: dotnet restore
-     
+    - name: Install .NET WASM Build Tools
+      run: dotnet workload install wasm-tools
+      
     - name: Build
-      run: dotnet publish DiegoG.WebTools/DiegoG.WebTools.csproj -c:Release -o dist/Web --no-restore
+      run: dotnet publish ./DiegoG.WebTools/DiegoG.WebTools.csproj -p:GHPages=true -c:Release -o dist/Web --nologo
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
