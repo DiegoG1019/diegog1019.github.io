@@ -1,0 +1,72 @@
+﻿@page "/qrcodegen"
+@using DiegoG.WebTools.DTOs
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@using QRCoder
+@inject IWebAssemblyHostEnvironment environment
+@inject ILogger<QRCodeGeneratorTool> Logger
+
+<PageTitle>@Language.CurrentLanguage.SiteTitle | @Language.CurrentLanguage.QRCodeGen</PageTitle>
+
+@{
+    /*
+     * 1. Setup a language switch
+     * 2. Make the default language dependent on current culture (thru the use of LanguageName)
+     * 3. Style the QR Code Generator
+     * 4. Add a Spanish language
+     * 5. Upload repo to github
+     * 6. Setup a CI/CD for github IO
+     */
+}
+
+<EditForm Model="Request" OnValidSubmit="HandleRequestSubmission">
+    <div class="container"> <!-- Grid -->
+        <div class="row"> <!-- Top Row -->
+            <div class="col-sm"> <!-- Top Row -> Left side -->
+                <label for="content">@Language.CurrentLanguage.QRContent</label>
+                <InputTextArea id="content" name="content" @bind-Value="Request.Content" /><br><br>
+
+                <label for="ppm">@Language.CurrentLanguage.QRPPM</label>
+                <InputNumber TValue="int" min="1" max="80" id="ppm" name="ppm" @bind-Value="Request.PPM" /><br><br>
+
+                <label for="ecc">@Language.CurrentLanguage.QRECC</label>
+                <InputSelect TValue="QRCodeGenerator.ECCLevel" id="ecc" name="ecc" @bind-Value="Request.ECC">
+                    <option value="-1">Default</option>
+                    <option value="0">L</option>
+                    <option value="1">M</option>
+                    <option value="2">Q</option>
+                    <option value="3">H</option>
+                </InputSelect><br><br>
+
+                <label for="eci">@Language.CurrentLanguage.QRECIMode</label>
+                <InputSelect TValue="QRCodeGenerator.EciMode" id="eci" name="eci" @bind-Value="Request.EciMode">
+                    <option value="0">Default</option>
+                    <option value="3">ISO 8859 1</option>
+                    <option value="4">ISO 8859 2</option>
+                    <option value="26">UTF-8</option>
+                </InputSelect><br><br>
+
+                <label for="utf8">@Language.CurrentLanguage.QRForceUTF8</label>
+                <InputCheckbox id="futf8" name="futf8" @bind-Value="Request.ForceUTF8" /><br><br>
+
+                <label for="utf8bom">@Language.CurrentLanguage.QRUTF8Bom</label>
+                <InputCheckbox id="utf8bom" name="utf8bom" @bind-Value="Request.UTF8BOM" /><br><br>
+
+                <label for="reqversion">@Language.CurrentLanguage.QRRequestedVersion</label>
+                <InputNumber TValue="int" id="reqversion" name="reqversion" @bind-Value="Request.RequestedVersion" /><br><br>
+                <!--
+                <label for="logo">Logo:</label>
+                <InputFile id="logo" name="logo" OnChange="LoadFile" single /><br><br>
+                -->
+            </div>
+            <div class="col-sm"> <!-- Top Row -> Right Side -->
+                <h2>Resulting QR Code</h2>
+                <img src="@ImageData"
+                     id="output-qrcode"
+                     alt="Resulting QR Code" />
+            </div>
+        </div>
+        <div class="row"> <!-- Bottom Row -->
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+</EditForm>
