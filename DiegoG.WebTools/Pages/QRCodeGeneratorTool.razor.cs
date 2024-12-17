@@ -41,22 +41,8 @@ public partial class QRCodeGeneratorTool
     public Task HandleRequestSubmission()
         => GenerateNewQR();
 
-    private async Task GenerateNewQR()
+    private void WriteQrCodeB64(byte[] data)
     {
-        Logger.LogInformation("Generating new QR Code");
-        var data = await QRCodeHelpers.GenerateQrCode(
-            Request.Content ?? "",
-            Request.ECC,
-            Request.EciMode,
-            Request.PPM,
-            Request.ForceUTF8,
-            Request.UTF8BOM,
-            Request.RequestedVersion,
-            File?.OpenReadStream(1024 * 1024 * 100), // 100MB
-            Logger
-        );
-
-        Logger.LogDebug("Encoding QR Code into Base64 string");
         var rented = ArrayPool<byte>.Shared.Rent(Base64.GetMaxEncodedToUtf8Length(data.Length));
         try
         {
@@ -75,6 +61,25 @@ public partial class QRCodeGeneratorTool
         {
             ArrayPool<byte>.Shared.Return(rented);
         }
+    }
+
+    private async Task GenerateNewQR()
+    {
+        Logger.LogInformation("Generating new QR Code");
+        var data = await QRCodeHelpers.GenerateQrCode(
+            Request.Content ?? "",
+            Request.ECC,
+            Request.EciMode,
+            Request.PPM,
+            Request.ForceUTF8,
+            Request.UTF8BOM,
+            Request.RequestedVersion,
+            File?.OpenReadStream(1024 * 1024 * 100), // 100MB
+            Logger
+        );
+
+        Logger.LogDebug("Encoding QR Code into Base64 string");
+        WriteQrCodeB64(data);
 
         Logger.LogInformation("QR Code Succesfully generated");
     }
