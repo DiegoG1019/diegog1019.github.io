@@ -29,7 +29,7 @@ jobs:
 
     - name: Deploy GitHub Pages site
       uses: actions/deploy-pages@v4.0.5
-      with:
+      #with:
         # GitHub token
         #token: # default is ${{ github.token }}
         # Time in milliseconds after which to timeout and cancel the deployment (default: 10 minutes)
