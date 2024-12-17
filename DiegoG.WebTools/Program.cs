@@ -14,7 +14,11 @@ public class Program
 
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddCascadingValue(sp => new LanguageProvider());
+#if DEBUG
         builder.Logging.SetMinimumLevel(LogLevel.Trace);
+#else
+        builder.Logging.SetMinimumLevel(LogLevel.Information);
+#endif
         await builder.Build().RunAsync();
     }
 }
