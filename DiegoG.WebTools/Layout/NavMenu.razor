@@ -7,15 +7,15 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+<div id="nav-items-container" class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="nav flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> @Language.CurrentLanguage.Home
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="qrcodegen">
+            <NavLink class="nav-link" href="qrcodegen" Match="NavLinkMatch.All">
                 <span class="bi bi-qr-code-fill-nav-menu" aria-hidden="true"></span> @Language.CurrentLanguage.QRCodeGen
             </NavLink>
         </div>
@@ -25,7 +25,7 @@
 @code {
     private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapsed" : null;
 
     private void ToggleNavMenu()
     {

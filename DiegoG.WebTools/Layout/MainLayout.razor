@@ -7,7 +7,7 @@
 
     <main>
         <div class="top-row px-4">
-            <InputSelect TValue="string" @bind-Value="CurrentLanguage">
+            <InputSelect TValue="string" @bind-Value="CurrentLanguage" id="language-selector" class="form-select">
                 @foreach(var lang in AvailableLanguages.Languages)
                 {
                     <option value="@lang.Key">@lang.Value.LanguageName</option>
