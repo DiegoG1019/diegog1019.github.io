@@ -28,7 +28,7 @@ jobs:
       run: dotnet restore
      
     - name: Build
-      run: dotnet publish -c:Release -p:GHPages=true -o dist/Web --no-restore
+      run: dotnet publish DiegoG.WebTools/DiegoG.WebTools.csproj -c:Release -o dist/Web --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
