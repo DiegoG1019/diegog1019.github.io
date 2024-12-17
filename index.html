@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiegoG.WebTools</title>
+    <base href="/" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="DiegoG.WebTools.styles.css" rel="stylesheet" />
+    <link href="manifest.webmanifest" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    
+    <meta name="description"
+          content="A developer show-case site for Diego García, Full Stack and Embedded Developer specializing in C#" />
+    
+    <meta itemProp="name" content="Developer DiegoG" />
+    <meta itemProp="description"
+          content="A developer show-case site for Diego García, Full Stack and Embedded Developer specializing in C#" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Developer DiegoG" />
+    <meta name="twitter:description"
+          content="A developer show-case site for Diego García, Full Stack and Embedded Developer specializing in C#" />
+    
+    <meta property="og:title" content="Developer DiegoG" />
+    <meta property="og:description"
+          content="A developer show-case site for Diego García, Full Stack and Embedded Developer specializing in C#" />
+    <meta property="og:url" content="diegog1019.github.io" />
+    <meta property="og:site_name" content="Developer DiegoG" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="icon-512.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
+</body>
+
+</html>
