@@ -11,41 +11,99 @@
     <div class="container"> <!-- Grid -->
         <div class="row"> <!-- Top Row -->
             <div class="col-sm"> <!-- Top Row -> Left side -->
-                <label for="content">@Language.CurrentLanguage.QRContent</label>
-                <InputTextArea id="content" name="content" @bind-Value="Request.Content" /><br><br>
-
-                <label for="ppm">@Language.CurrentLanguage.QRPPM</label>
-                <InputNumber TValue="int" min="1" max="80" id="ppm" name="ppm" @bind-Value="Request.PPM" /><br><br>
-
-                <label for="ecc">@Language.CurrentLanguage.QRECC</label>
-                <InputSelect TValue="QRCodeGenerator.ECCLevel" id="ecc" name="ecc" @bind-Value="Request.ECC">
-                    <option value="-1">Default</option>
-                    <option value="0">L</option>
-                    <option value="1">M</option>
-                    <option value="2">Q</option>
-                    <option value="3">H</option>
-                </InputSelect><br><br>
-
-                <label for="eci">@Language.CurrentLanguage.QRECIMode</label>
-                <InputSelect TValue="QRCodeGenerator.EciMode" id="eci" name="eci" @bind-Value="Request.EciMode">
-                    <option value="0">Default</option>
-                    <option value="3">ISO 8859 1</option>
-                    <option value="4">ISO 8859 2</option>
-                    <option value="26">UTF-8</option>
-                </InputSelect><br><br>
-
-                <label for="utf8">@Language.CurrentLanguage.QRForceUTF8</label>
-                <InputCheckbox id="futf8" name="futf8" @bind-Value="Request.ForceUTF8" /><br><br>
-
-                <label for="utf8bom">@Language.CurrentLanguage.QRUTF8Bom</label>
-                <InputCheckbox id="utf8bom" name="utf8bom" @bind-Value="Request.UTF8BOM" /><br><br>
-
-                <label for="reqversion">@Language.CurrentLanguage.QRRequestedVersion</label>
-                <InputNumber TValue="int" id="reqversion" name="reqversion" @bind-Value="Request.RequestedVersion" /><br><br>
-                <!--
-                <label for="logo">Logo:</label>
-                <InputFile id="logo" name="logo" OnChange="LoadFile" single /><br><br>
-                -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <label for="content">@Language.CurrentLanguage.QRContent</label>
+                        </div>
+                        <div class="col-sm">
+                            <InputTextArea id="content" name="content" @bind-Value="Request.Content" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!---->
+                            <label for="ppm">@Language.CurrentLanguage.QRPPM</label>
+                        </div>
+                        <div class="col-sm">
+                            <!---->
+                            <InputNumber TValue="int" min="1" max="80" id="ppm" name="ppm" @bind-Value="Request.PPM" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!---->
+                            <label for="ecc">@Language.CurrentLanguage.QRECC</label>
+                        </div>
+                        <div class="col-sm">
+                            <!---->
+                            <InputSelect TValue="QRCodeGenerator.ECCLevel" id="ecc" name="ecc" @bind-Value="Request.ECC">
+                                <option value="-1">Default</option>
+                                <option value="0">L</option>
+                                <option value="1">M</option>
+                                <option value="2">Q</option>
+                                <option value="3">H</option>
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!---->
+                            <label for="eci">@Language.CurrentLanguage.QRECIMode</label>
+                        </div>
+                        <div class="col-sm">
+                            <!---->
+                            <InputSelect TValue="QRCodeGenerator.EciMode" id="eci" name="eci" @bind-Value="Request.EciMode">
+                                <option value="0">Default</option>
+                                <option value="3">ISO 8859 1</option>
+                                <option value="4">ISO 8859 2</option>
+                                <option value="26">UTF-8</option>
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!---->
+                            <label for="utf8">@Language.CurrentLanguage.QRForceUTF8</label>
+                        </div>
+                        <div class="col-sm">
+                            <!---->
+                            <InputCheckbox id="futf8" name="futf8" @bind-Value="Request.ForceUTF8" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!---->
+                            <label for="utf8bom">@Language.CurrentLanguage.QRUTF8Bom</label>
+                        </div>
+                        <div class="col-sm">
+                            <!---->
+                            <InputCheckbox id="utf8bom" name="utf8bom" @bind-Value="Request.UTF8BOM" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!---->
+                            <label for="reqversion">@Language.CurrentLanguage.QRRequestedVersion</label>
+                        </div>
+                        <div class="col-sm">
+                            <!---->
+                            <InputNumber TValue="int" id="reqversion" name="reqversion" @bind-Value="Request.RequestedVersion" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm input-label-container">
+                            <!--
+                            <label for="logo">Logo:</label>
+                            -->
+                        </div>
+                        <div class="col-sm">
+                            <!--
+                            <InputFile id="logo" name="logo" OnChange="LoadFile" single />
+                            -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-sm"> <!-- Top Row -> Right Side -->
                 <h2>Resulting QR Code</h2>
@@ -54,8 +112,8 @@
                      alt="Resulting QR Code" />
             </div>
         </div>
-        <div class="row"> <!-- Bottom Row -->
-            <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="future-notice"> <!-- Bottom Row -->
+            <span>@Language.CurrentLanguage.QRLogoOnCodeFeature</span>
         </div>
     </div>
 </EditForm>

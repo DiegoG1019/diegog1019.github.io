@@ -27,6 +27,7 @@ public sealed class Language
     public required string SubmitButton { get; init; }
     public required string NotFoundTitle { get; init; }
     public required string NotFoundMessage { get; init; }
+    public required string QRLogoOnCodeFeature { get; init; }
 }
 
 public static class AvailableLanguages
@@ -53,7 +54,9 @@ public static class AvailableLanguages
             QRRequestedVersion = "Version de Código QR: ",
             SubmitButton = "Generar",
             NotFoundTitle = "No Encontrado",
-            NotFoundMessage = "Lo siento, no hay nada en esta dirección"
+            NotFoundMessage = "Lo siento, no hay nada en esta dirección",
+
+            QRLogoOnCodeFeature = "Pronto podrás incluir una imagen en tu código QR!"
         };
 
         English = new Language()
@@ -76,7 +79,9 @@ public static class AvailableLanguages
             QRRequestedVersion = "QR Code Version: ",
             SubmitButton = "Submit",
             NotFoundTitle = "Not Found",
-            NotFoundMessage = "Sorry, there's nothing at this address"
+            NotFoundMessage = "Sorry, there's nothing at this address",
+
+            QRLogoOnCodeFeature = "Logos on the QR code coming soon!"
         };
 
         Languages = typeof(AvailableLanguages).GetProperties()
