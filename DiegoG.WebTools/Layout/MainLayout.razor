@@ -7,6 +7,9 @@
 
     <main>
         <div class="top-row px-4">
+            <a class="top-pfp" href="@Language.CurrentLanguage.CVUri" target="_blank">
+                <img src="/professional-pic.jpg" width="32" height="32" />
+            </a>
             <InputSelect TValue="string" @bind-Value="CurrentLanguage" id="language-selector" class="form-select">
                 @foreach(var lang in AvailableLanguages.Languages)
                 {

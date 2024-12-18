@@ -1,11 +1,28 @@
-﻿.labels {
+﻿.input-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.inputs {
+.qrcode-info-col {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.input-container {
+#output-qrcode {
+    width: 15rem;
+    height: 15rem;
+    image-rendering: pixelated;
+}
+
+.input-label-container {
     display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.input-row {
+    margin: .5rem;
 }

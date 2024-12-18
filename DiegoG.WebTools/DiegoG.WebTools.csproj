@@ -29,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
+    <None Include="wwwroot\SiteBackdrop.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\SiteBackdrop.png" />
+    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>

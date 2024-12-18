@@ -17,7 +17,7 @@ public static class QRCodeHelpers
     public const QRCodeGenerator.ECCLevel DefaultECC = QRCodeGenerator.ECCLevel.Default;
     public const QRCodeGenerator.EciMode DefaultEciMode = QRCodeGenerator.EciMode.Default;
 
-    public static async Task<byte[]> GenerateQrCode(
+    public static async Task<(byte[] Data, Rectangle Bounds)> GenerateQrCode(
         string content, 
         QRCodeGenerator.ECCLevel ecc, 
         QRCodeGenerator.EciMode eciMode, 
@@ -99,12 +99,15 @@ public static class QRCodeHelpers
 
             await finalImage.SaveAsPngAsync(outputStream);
             log.LogDebug("Converting memory stream data to array");
-            return outputStream.ToArray();
+            return (outputStream.ToArray(), finalImage.Bounds);
         }
         else
         {
             log.LogDebug("Obtaining QR Code graphic");
-            return qrCode.GetGraphic(ppm);
+            var graph = qrCode.GetGraphic(ppm);
+            using var mem = new MemoryStream(graph);
+            var imginfo = await Image.IdentifyAsync(mem);
+            return (graph, imginfo.Bounds);
         }
     }
 

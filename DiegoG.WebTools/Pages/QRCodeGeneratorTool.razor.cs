@@ -2,16 +2,34 @@
 using DiegoG.WebTools.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using QRCoder;
 using System.Buffers;
 using System.Buffers.Text;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Unicode;
 
 namespace DiegoG.WebTools.Pages;
 
 public partial class QRCodeGeneratorTool
 {
+    private static readonly ImmutableArray<(QRCodeGenerator.ECCLevel Value, string Name)> ECCLevels = [
+        (QRCodeGenerator.ECCLevel.Default, "Default"),
+        (QRCodeGenerator.ECCLevel.L, "L"),
+        (QRCodeGenerator.ECCLevel.M, "M"),
+        (QRCodeGenerator.ECCLevel.Q, "Q"),
+        (QRCodeGenerator.ECCLevel.H, "H")
+    ];
+
+    private static readonly ImmutableArray<(QRCodeGenerator.EciMode Value, string Name)> EciModes = [
+        (QRCodeGenerator.EciMode.Default, "Default"),
+        (QRCodeGenerator.EciMode.Iso8859_1, "ISO 8859 1"),
+        (QRCodeGenerator.EciMode.Iso8859_2, "ISO 8859 2"),
+        (QRCodeGenerator.EciMode.Utf8, "UTF-8")
+    ];
+
     public const string B64ImagePreamble = "data:image/png;base64,";
     private IBrowserFile? File;
     public string ImageData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
@@ -20,6 +38,8 @@ public partial class QRCodeGeneratorTool
     public LanguageProvider Language { get; set; }
 
     private GenerateQRCodeRequest Request { get; } = new();
+
+    private string QRCodeSizeNotice { get; set; } = "N/A";
 
     private void LoadFile(InputFileChangeEventArgs e)
     {
@@ -66,7 +86,7 @@ public partial class QRCodeGeneratorTool
     private async Task GenerateNewQR()
     {
         Logger.LogInformation("Generating new QR Code");
-        var data = await QRCodeHelpers.GenerateQrCode(
+        var (data, bounds) = await QRCodeHelpers.GenerateQrCode(
             Request.Content ?? "",
             Request.ECC,
             Request.EciMode,
@@ -80,6 +100,7 @@ public partial class QRCodeGeneratorTool
 
         Logger.LogDebug("Encoding QR Code into Base64 string");
         WriteQrCodeB64(data);
+        QRCodeSizeNotice = $"{bounds.Width} x {bounds.Height} @ {data.Length / 1024f:0.00} KB";
 
         Logger.LogInformation("QR Code Succesfully generated");
     }
