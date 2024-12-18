@@ -106,6 +106,12 @@ main[b-6ozt7snvtf] {
     background-size: cover;
 }
 
+#nav-items-container[b-9kbf88l01q] {
+    transition: max-height ease-in-out 0.25s;
+    max-height: 1000%;
+    display: flex;
+}
+
 .bi-house-door-fill-nav-menu[b-9kbf88l01q] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-house-door-fill' viewBox='0 0 16 16'%3E%3Cpath d='M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z'/%3E%3C/svg%3E");
 }
@@ -159,7 +165,7 @@ main[b-6ozt7snvtf] {
         display: none;
     }
 
-    .collapse[b-9kbf88l01q] {
+    .collapsed[b-9kbf88l01q] {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
@@ -169,4 +175,22 @@ main[b-6ozt7snvtf] {
         height: calc(100vh - 3.5rem);
         overflow-y: auto;
     }
+}
+@media (max-width: 640px) {
+    #nav-items-container.collapsed[b-9kbf88l01q] {
+        max-height: 0;
+        overflow: hidden;
+    }
+}
+/* /Pages/QRCodeGeneratorTool.Razor.rz.scp.css */
+.labels[b-bqrzgvjag7] {
+    display: flex;
+}
+
+.inputs[b-bqrzgvjag7] {
+    display: flex;
+}
+
+.input-container[b-bqrzgvjag7] {
+    display: flex;
 }

@@ -140,8 +140,9 @@ a.cv-view-button {
     }
 
     .cv-view-button > span {
-        height: 5rem;
-        width: 5rem;
+        height: 7rem;
+        width: 7rem;
+        overflow: hidden;
     }
 
     .cv-view-button:hover > span {
@@ -158,14 +159,6 @@ a.cv-view-button {
             transition: border ease-in-out 0.15s, height ease-in-out 0.15s, width ease-in-out 0.15s, stroke ease-in-out 0.25s, fill ease-in-out 0.25s, color ease-in-out 0.25s;
         }
 
-        .cv-view-button:hover > span > svg {
-            height: 7rem;
-            width: 7rem;
-            stroke: white;
-            fill: white;
-            color: white;
-        }
-
 img.profile-pic {
     border-radius: 50%;
     margin: 2%;
@@ -178,30 +171,6 @@ img.profile-pic {
 #intro > .header {
     align-content: center;
 }
-
-#cv {
-    display: flex;
-    justify-content: center;
-    offset: path('M 1000 80 L 180 55') 0deg;
-    animation-name: cv-swoop-in;
-    animation-duration: 1.5s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-    offset-distance: 100%;
-}
-
-@keyframes cv-swoop-in {
-    0% {
-        offset-distance: 0%;
-    }
-    100% {
-        offset-distance: 100%;
-    }
-}
-
-    #cv > .btn {
-        margin: 10px;
-    }
 
 .profile-pic {
     align-self: center;
@@ -217,17 +186,78 @@ img.profile-pic {
 }
 
 @keyframes top-drop-fade-in-anim {
-    from {
-        transform: translate(-10000, -10000);
+    0% {
+        transform: scaleY(1.5);
         opacity: 0;
     }
-    to {
-        transform: translate(0, 0);
+    65% {
+        transform: scaleY(1);
+    }
+    100% {
         opacity: unset;
     }
 }
 
-@media only screen and (min-device-width: 400px) {
+#language-selector {
+    width: 150px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#cv > .btn {
+    margin: 10px;
+}
+
+#cv {
+    display: flex;
+    justify-content: center;
+    animation-name: cv-swoop-in;
+    animation-duration: .9s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@media only screen and (max-device-width: 400px) {
+    #cv {
+        position: absolute;
+        right: 5%;
+        top: 14.5%;
+    }
+
+    @keyframes cv-swoop-in {
+        0% {
+            right: 0;
+        }
+
+        100% {
+            right: 5%;
+        }
+    }
+}
+
+@media only screen and (min-device-width: 401px) {
+    #cv {
+        right: calc(50% - 12rem);
+    }
+
+    .cv-view-button:hover > span > svg {
+        height: 7rem;
+        width: 7rem;
+        stroke: white;
+        fill: white;
+        color: white;
+    }
+
+    @keyframes cv-swoop-in {
+        0% {
+            right: 0;
+        }
+
+        100% {
+            right: calc(50% - 12rem);
+        }
+    }
+
     div.profile-pic {
         position: relative;
         width: 100%;
