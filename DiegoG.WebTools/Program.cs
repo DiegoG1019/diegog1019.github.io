@@ -4,6 +4,12 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace DiegoG.WebTools;
 
+/*
+ * When building, remember:
+ * * Either figure out how to disable base url setting by the deployer, or
+ * * Add a manual edit after deployment to include the SiteBackdrop and remove the base url setting
+ */
+
 public class Program
 {
     public static async Task Main(string[] args)
