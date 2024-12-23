@@ -25,7 +25,7 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-cZJ8anjtA3qx9rBw4sqXXQ8Q0vseXqc9X8x0VMKoMJU=",
+      "hash": "sha256-5I73N3pRFl8FEkOXC0ujB2B\/OT3RC45Gzrg7SiaGrb8=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
@@ -33,11 +33,11 @@
       "url": "_framework\/dotnet.native.8.0.11.g18ei2mg6y.js"
     },
     {
-      "hash": "sha256-7ykOAX62Cq\/gJkQ7LVXIyt2R5RzzslI4AeGMK7JwPnw=",
+      "hash": "sha256-yp8VEdeqi20mC6DQbeORm5xiVw\/MJa3iv+L\/ePKnbWs=",
       "url": "_framework\/dotnet.native.wasm.br"
     },
     {
-      "hash": "sha256-PetCE2IPSGkKgxaIPxbOsLczLbs90bYEN7etprcdSTQ=",
+      "hash": "sha256-wLlzxgGZIH\/R6IxaBvZWBPEw1gnkBRNh3+XxDEMNvBg=",
       "url": "_framework\/DiegoG.WebTools.wasm.br"
     },
     {
@@ -103,6 +103,10 @@
     {
       "hash": "sha256-jhb1pCwc5c4XJNgP6Ki26KluH9uPp3OO0L42stKyM5o=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.wasm.br"
+    },
+    {
+      "hash": "sha256-SSp78y+198HyK+SIpTU1SVvevM\/Ajor2XQ5VS\/6wHmI=",
+      "url": "_framework\/Nito.Collections.Deque.wasm.br"
     },
     {
       "hash": "sha256-YEgL9GQp7SWaj92EPw334V8jyK4\/FX38T2qnais08o4=",
@@ -193,7 +197,7 @@
       "url": "_framework\/System.ObjectModel.wasm.br"
     },
     {
-      "hash": "sha256-7hHfYyhavwwIgVhndrV\/\/iiAb54UBDQeZn\/R2+XU1zw=",
+      "hash": "sha256-uTwJrMrsKNC+qnTDYFy4iU2Ysj1MnrFsNOc7O9ZVNVU=",
       "url": "_framework\/System.Private.CoreLib.wasm.br"
     },
     {
@@ -221,7 +225,7 @@
       "url": "_framework\/System.Runtime.Serialization.Primitives.wasm.br"
     },
     {
-      "hash": "sha256-Tehx4ptZLdjIAxzfSF4fitpJo+AGfwylNmlVN+ihHz0=",
+      "hash": "sha256-Yu8aS2+udvijdBfLugbi7qo3wJSNZntzXmdQhngL1Gc=",
       "url": "_framework\/System.Runtime.wasm.br"
     },
     {
@@ -265,7 +269,7 @@
       "url": "_framework\/System.Xml.XDocument.wasm.br"
     },
     {
-      "hash": "sha256-BjTYCM2qrfX9TnEfQe7LZlH1jtUCJuFOzHjku3ty67Q=",
+      "hash": "sha256-ztSFlDZw+0\/+fyZx26hKM3PniQn5mm5vn4I5B27O5Ho=",
       "url": "DiegoG.WebTools.styles.css"
     },
     {
@@ -277,7 +281,7 @@
       "url": "CV-icon.svg"
     },
     {
-      "hash": "sha256-ofjH6Ys0GxNd7UsAUBqlTDAbnLA77pybP292lTPVaBY=",
+      "hash": "sha256-DG6yH5YQuwDG0\/EOMl\/h879Olbtd9Jn9s71CrC2vzi8=",
       "url": "Diego CV - ENGLISH - DEC24.pdf"
     },
     {
@@ -493,5 +497,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "AoVafO5H"
+  "version": "oz6YRjtW"
 };

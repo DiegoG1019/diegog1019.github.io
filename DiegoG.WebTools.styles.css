@@ -13,6 +13,29 @@ main[b-6ozt7snvtf] {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
+.top-email[b-6ozt7snvtf] {
+    transition: border ease-in-out 0.1s;
+    border-radius: 10%;
+    padding: 2px;
+    border-width: 0;
+    border-color: lightblue;
+    border-style: solid;
+}
+
+    .top-email > svg[b-6ozt7snvtf] {
+        transition: width ease-in-out 0.25s, height ease-in-out 0.25s
+    }
+
+.top-email:hover[b-6ozt7snvtf] {
+    border-width: 3px;
+}
+
+.top-email:hover > svg[b-6ozt7snvtf] {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+}
+
 .bi-gh-fill-nav-menu[b-6ozt7snvtf] {
     content: url('https://github.com/fluidicon.png');
     height: 1.5rem;
