@@ -1,4 +1,6 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject HttpClient Http
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">@Language.CurrentLanguage.SiteTitle</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -19,6 +21,21 @@
                 <span class="bi bi-qr-code-fill-nav-menu" aria-hidden="true"></span> @Language.CurrentLanguage.QRCodeGen
             </NavLink>
         </div>
+        @if (Apps is not null and { Count: > 0})
+        {
+            @foreach (var app in Apps) 
+            {
+                <div class="nav-item px-3">
+                    @if (string.IsNullOrWhiteSpace(app.Styles) is false)
+                    {
+                        <style>@app.Styles</style>
+                    }
+                    <NavLink class="nav-link" href="@app.Uri" Match="NavLinkMatch.All">
+                        <span class="bi bi-app-@(app.Id)-fill-nav-menu" aria-hidden="true"></span> @GetAppDisplayName(app) <span class="bi bi-external-fill-nav-menu" aria-hidden="true"></span>
+                    </NavLink>
+                </div>
+            }
+        }
     </nav>
 </div>
 
