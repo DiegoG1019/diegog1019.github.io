@@ -38,7 +38,7 @@ public static class AvailableLanguages
         Español = new Language()
         {
             LanguageName = "Español",
-            LanguageCode = "es",
+            LanguageCode = "esp",
             AboutMeUri = "https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/README-spanish.md",
             AboutMe = "Sobre Mí",
             CVUri = "/Diego CV - ESPAÑOL - DEC24.pdf",
@@ -64,7 +64,7 @@ public static class AvailableLanguages
         English = new Language()
         {
             LanguageName = "English",
-            LanguageCode = "en",
+            LanguageCode = "eng",
             AboutMeUri = "https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/README.md",
             AboutMe = "About Me",
             CVUri = "/Diego CV - ENGLISH - DEC24.pdf",
@@ -93,7 +93,8 @@ public static class AvailableLanguages
                                                   .Cast<Language>()
                                                   .ToFrozenDictionary(
                                                       v => v.LanguageCode,
-                                                      k => k
+                                                      k => k,
+                                                      StringComparer.OrdinalIgnoreCase
                                                   );
     }
 

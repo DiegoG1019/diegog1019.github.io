@@ -9,7 +9,7 @@ public sealed class LanguageProvider : INotifyPropertyChanged
 
     public LanguageProvider()
     {
-        var langcode = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+        var langcode = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
         if (AvailableLanguages.Languages.TryGetValue(langcode, out var lang))
             _currentLanguage = lang;
         else
