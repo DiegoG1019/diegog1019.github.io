@@ -25,15 +25,18 @@
         {
             @foreach (var app in Apps) 
             {
-                <div class="nav-item px-3">
-                    @if (string.IsNullOrWhiteSpace(app.Styles) is false)
-                    {
-                        <style>@app.Styles</style>
-                    }
-                    <NavLink class="nav-link" href="@app.Uri" Match="NavLinkMatch.All">
-                        <span class="bi bi-app-@(app.Id)-fill-nav-menu" aria-hidden="true"></span> @GetAppDisplayName(app) <span class="bi bi-external-fill-nav-menu" aria-hidden="true"></span>
-                    </NavLink>
-                </div>
+                @if (app.Enabled)
+                {
+                    <div class="nav-item px-3">
+                        @if (string.IsNullOrWhiteSpace(app.Styles) is false)
+                        {
+                            <style>@app.Styles</style>
+                        }
+                        <NavLink class="nav-link" href="@app.Uri" Match="NavLinkMatch.All">
+                            <span class="bi bi-app-@(app.Id)-fill-nav-menu" aria-hidden="true"></span> @GetAppDisplayName(app) <span class="bi bi-external-fill-nav-menu" aria-hidden="true"></span>
+                        </NavLink>
+                    </div>
+                }
             }
         }
     </nav>
