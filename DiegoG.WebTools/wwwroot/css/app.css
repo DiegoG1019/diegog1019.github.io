@@ -8,11 +8,39 @@
 
     .highlightable:hover {
         color: #0d6efd;
-        transform: scale(1.15, 1.15);
+        transform: scale(1.05, 1.05);
         border-radius: 5%;
         border-width: 2px;
         border-color: lightblue;
         border-style: solid;
+    }
+
+table.notable-apps {
+    margin-bottom: 10px;
+}
+
+table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    width: 100%;
+    overflow: clip;
+    font-variant: tabular-nums;
+}
+
+    table tr {
+        width: max-content;
+        overflow: visible;
+    }
+
+    table td {
+        border: 1px solid #3d444d;
+        padding: 6px 13px;
+    }
+
+    table th {
+        border: 1px solid #3d444d;
+        padding: 6px 13px;
     }
 
 html, body {
