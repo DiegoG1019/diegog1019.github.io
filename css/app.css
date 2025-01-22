@@ -1,3 +1,20 @@
+.not-in-website {
+    display: none !important;
+}
+
+.highlightable {
+    transition: border ease-in-out 0.15s, height ease-in-out 0.15s, width ease-in-out 0.15s, color ease-in-out 0.15s, transform ease-in-out 0.15s;
+}
+
+    .highlightable:hover {
+        color: #0d6efd;
+        transform: scale(1.15, 1.15);
+        border-radius: 5%;
+        border-width: 2px;
+        border-color: lightblue;
+        border-style: solid;
+    }
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: white;
