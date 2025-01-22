@@ -1,6 +1,7 @@
 ﻿using DiegoG.WebTools.Services;
 using Markdig;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 namespace DiegoG.WebTools.Pages;
 
@@ -39,7 +40,9 @@ public partial class Home
             Language.CurrentLanguage.AboutMeUri
         );
 
-        var resp = await Http.GetAsync(Language.CurrentLanguage.AboutMeUri);
+        using var msg = new HttpRequestMessage(HttpMethod.Get, Language.CurrentLanguage.AboutMeUri);
+        msg.SetBrowserRequestCache(BrowserRequestCache.NoCache);
+        var resp = await Http.SendAsync(msg);
         Markup = (MarkupString)Markdown.ToHtml(await resp.Content.ReadAsStringAsync());
         StateHasChanged();
     }

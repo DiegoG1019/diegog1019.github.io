@@ -1,5 +1,4 @@
-﻿
-.cv-view-button {
+﻿.cv-view-button {
     display: flex;
     transition: border ease-in-out 0.15s, height ease-in-out 0.15s, width ease-in-out 0.15s, color ease-in-out 0.15s;
     width: 7rem;
