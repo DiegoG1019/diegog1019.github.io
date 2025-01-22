@@ -17,8 +17,8 @@
       "url": "DiegoG.WebTools.styles.css.br"
     },
     {
-      "hash": "sha256-R4Mv8kSpWggaBMusmEhJkXshg+JYZIXlH0by4aUg3hA=",
-      "url": "_framework\/DiegoG.WebTools.7uwqrev39h.wasm.br"
+      "hash": "sha256-tnbgB54n5kmu9gK8UXkYdcAOMAslKMuisOPjDzyIxRw=",
+      "url": "_framework\/DiegoG.WebTools.46bnpgxkty.wasm.br"
     },
     {
       "hash": "sha256-JxUVoEvyMw4hV2NcHgsCIyl3YW2R5pEztLZQlItaADI=",
@@ -253,7 +253,7 @@
       "url": "_framework\/System.pndwwxah3a.wasm.br"
     },
     {
-      "hash": "sha256-O3aVgVLo\/fQuvkMniC9hHa6pm6yVje+7Xva0e1CJC8s=",
+      "hash": "sha256-yFVo5HgI3sBgZfX7FY2TMxVLrvQyE2WjAUoVd4yGq6Q=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
@@ -289,7 +289,7 @@
       "url": "_framework\/icudt_no_CJK.lfu7j35m59.dat.br"
     },
     {
-      "hash": "sha256-Xu8vFP+RTsryNATfEPvlYrYgtTECAQU\/FV7rfYdrruI=",
+      "hash": "sha256-CX1lldKURI9RZUWBcwrQ7hszfJQaJEMB1XPehgdfCBE=",
       "url": "css\/app.css.br"
     },
     {
@@ -501,5 +501,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "xM5TBaMf"
+  "version": "K\/Z06fiI"
 };
