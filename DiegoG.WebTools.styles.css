@@ -1,3 +1,5 @@
+@import '_content/Blazored.Modal/Blazored.Modal.bundle.scp.css';
+
 /* /Layout/MainLayout.razor.rz.scp.css */
 .page[b-6ozt7snvtf] {
     position: relative;
@@ -209,6 +211,10 @@ main[b-6ozt7snvtf] {
         max-height: 0;
         overflow: hidden;
     }
+}
+/* /Pages/ContactMePage.razor.rz.scp.css */
+.contact-means td[b-4uut2yny1w] {
+    border: none;
 }
 /* /Pages/Home.razor.rz.scp.css */
 .cv-view-button[b-zrfed09nct] {
