@@ -49,6 +49,15 @@ html, body {
     background-color: #0d1117;
 }
 
+.contact-me-modal {
+    background-color: #0d1117 !important;
+    border-color: #222d3d !important;
+}
+
+    .contact-me-modal button {
+        color: white !important;
+    }
+
 div {
     animation-name: top-drop-fade-in-anim;
     animation-duration: 0.5s;

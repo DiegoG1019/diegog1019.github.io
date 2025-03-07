@@ -29,6 +29,7 @@ public sealed class Language
     public required string NotFoundMessage { get; init; }
     public required string QRLogoOnCodeFeature { get; init; }
     public required string ContactMe { get; init; }
+    public required string ContactMeans { get; init; }
 }
 
 public static class AvailableLanguages
@@ -57,6 +58,7 @@ public static class AvailableLanguages
             NotFoundTitle = "No Encontrado",
             NotFoundMessage = "Lo siento, no hay nada en esta dirección",
             ContactMe = "Contáctame!",
+            ContactMeans = "Métodos de Contacto",
 
             QRLogoOnCodeFeature = "Pronto podrás incluir una imagen en tu código QR!"
         };
@@ -83,6 +85,7 @@ public static class AvailableLanguages
             NotFoundTitle = "Not Found",
             NotFoundMessage = "Sorry, there's nothing at this address",
             ContactMe = "Contact Me!",
+            ContactMeans = "Contact Means",
 
             QRLogoOnCodeFeature = "Logos on the QR code coming soon!"
         };

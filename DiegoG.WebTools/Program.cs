@@ -1,3 +1,4 @@
+using Blazored.Modal;
 using DiegoG.WebTools.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -21,6 +22,8 @@ public class Program
         builder.Services.AddCascadingValue(sp => new LanguageProvider());
         builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddSingleton<AppCatalog>();
+        builder.Services.AddBlazoredModal();
+
 #if DEBUG
         builder.Logging.SetMinimumLevel(LogLevel.Trace);
 #else

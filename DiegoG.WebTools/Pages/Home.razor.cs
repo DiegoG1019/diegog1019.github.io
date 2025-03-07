@@ -1,4 +1,5 @@
-﻿using DiegoG.WebTools.Services;
+﻿using Blazored.Modal.Services;
+using DiegoG.WebTools.Services;
 using Markdig;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
@@ -10,7 +11,7 @@ public partial class Home
     public MarkupString? Markup { get; set; }
 
     [CascadingParameter]
-    public LanguageProvider Language { get; set; }
+    public LanguageProvider Language { get; set; } = default!;
 
     protected override void OnInitialized()
     {

@@ -12,17 +12,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazored.Modal" Version="7.3.1" />
     <PackageReference Include="Markdig" Version="0.40.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.2" />
     <PackageReference Include="Nito.Collections.Deque" Version="1.2.1" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
     <PackageReference Include="QRCoder" Version="1.6.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
     <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.5" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(DefineConstants.Contains(DEBUG))'">
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.2" />
   </ItemGroup>
 
   <ItemGroup>
