@@ -1,5 +1,6 @@
 ﻿@using DiegoG.WebTools.Services;
-@inject AppCatalog Apps
+@using GLV.Shared.Blazor
+@inject ItemCatalog<AppReference> Apps
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
@@ -22,7 +23,7 @@
                 <span class="bi bi-qr-code-fill-nav-menu" aria-hidden="true"></span> @Language.CurrentLanguage.QRCodeGen
             </NavLink>
         </div>
-        @if (Apps.TryGetApps(out var apps))
+        @if (Apps.TryGetItems(out var apps))
         {
             @foreach (var app in apps)
             {

@@ -1,4 +1,5 @@
-﻿using DiegoG.WebTools.Services;
+﻿using DiegoG.WebTools.Data;
+using DiegoG.WebTools.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 using System.Net.Http.Json;
@@ -21,7 +22,7 @@ public partial class NavMenu
 
     protected override async Task OnInitializedAsync()
     {
-        await Apps.FetchApps();
+        await Apps.FetchItems();
     }
 
     private void Language_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
