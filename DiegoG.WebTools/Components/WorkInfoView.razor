@@ -1,0 +1,13 @@
+﻿@using DiegoG.WebTools.Services;
+@using System.Globalization
+
+@inject ILogger<WorkInfoView> logger
+
+<div class="info-view" alt="@Item.Alt">
+    <h4>@Item.LocalizedNames.GetLocalizedString(Language.CurrentLanguage)</h4>
+    <hr />
+    @foreach (var p in Item.LocalizedDescriptions.GetLocalizedString(Language.CurrentLanguage).SplitParagraphs())
+    {
+        <p class="work-desc">@p</p>
+    }
+</div>

@@ -1,0 +1,23 @@
+﻿.info-view {
+    border: 1px solid #204980;
+    padding: 20px;
+    margin: 10px;
+    margin-top: 15px;
+    transition: border linear .25s, padding linear .25s, transform ease-in-out .25s, background-color ease-in-out .25s;
+    background-color: #121e2f;
+    border-radius: 2% 10%;
+    height: 100%;
+}
+
+    .info-view:hover {
+        border: 2px solid #295ea6;
+        background-color: #203655;
+        padding: 19px;
+        transform: scale(1.05, 1.05);
+    }
+
+.work-desc {
+    padding: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+}

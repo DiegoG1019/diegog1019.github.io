@@ -1,6 +1,8 @@
-﻿namespace DiegoG.WebTools.Data;
+﻿using DiegoG.WebTools.Services;
 
-public sealed class MeansOfContact
+namespace DiegoG.WebTools.Data;
+
+public sealed class MeansOfContact : ICatalogItem
 {
     public enum DisplayDataType
     {
@@ -9,8 +11,8 @@ public sealed class MeansOfContact
         Image
     }
 
-    public bool Enabled { get; init; }
     public string Alt { get; init; }
+    public bool Enabled { get; init; }
     public string DisplayName { get; init; }
     public string Uri { get; init; }
     public DisplayDataType DisplayType { get; init; }

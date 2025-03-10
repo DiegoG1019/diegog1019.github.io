@@ -1,6 +1,7 @@
 ﻿@using DiegoG.WebTools.Services
 @using DiegoG.WebTools.Pages
 @inherits LayoutComponentBase
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -14,11 +15,8 @@
                 </svg>
                 @Language.CurrentLanguage.ContactMe
             </a>
-            <a class="top-pfp" href="@Language.CurrentLanguage.CVUri" target="_blank">
-                <img src="/professional-pic.jpg" width="32" height="32" />
-            </a>
             <InputSelect TValue="string" @bind-Value="CurrentLanguage" id="language-selector" class="form-select">
-                @foreach(var lang in AvailableLanguages.Languages)
+                @foreach(var lang in AvailableLanguages.Languages.DistinctBy(x => x.Value.LanguageName, StringComparer.OrdinalIgnoreCase))
                 {
                     <option value="@lang.Key">@lang.Value.LanguageName</option>
                 }
@@ -31,5 +29,12 @@
         <article class="content px-4">
             @Body
         </article>
+
+        <div class="footer">
+            <hr />
+            <p>This website, and all its content excluding 3rd party logos and icons belong to Diego García, © 2025 All rights reserved.</p>
+            <br />
+        </div>
+
     </main>
 </div>

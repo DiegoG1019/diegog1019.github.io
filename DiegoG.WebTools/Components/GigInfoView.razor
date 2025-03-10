@@ -1,0 +1,29 @@
+﻿@using DiegoG.WebTools.Services;
+@using System.Globalization
+
+@inject ILogger<GigInfoView> logger
+@inject ClientExposedExchangeRateApiClient ExchangeRates
+
+<div class="info-view" alt="@Item.Alt">
+    <h4>@Item.LocalizedNames.GetLocalizedString(Language.CurrentLanguage)</h4>
+    <hr />
+    @foreach (var p in Item.LocalizedDescriptions.GetLocalizedString(Language.CurrentLanguage).SplitParagraphs())
+    {
+        <p class="gig-desc">@p</p>
+    }
+
+    <div class="avg-sell">
+        @Language.CurrentLanguage.AveragePriceRange
+
+        @if (TryGetExchangedBids(Item, out var excStarting, out var excEnding, out var currencyCode))
+        {
+            <p><span>@currencyCode @excStarting - @excEnding</span> *<br />
+            <span>USD @Item.StartingBidUSD.ToString("C", LanguageProvider.DefaultEnglishNumberFormatInfo) @Item.EndingBidUSD.ToString("C", LanguageProvider.DefaultEnglishNumberFormatInfo)</span> *</p>
+        }
+        else
+        {
+            <p><span>USD @excStarting - @excEnding</span> *</p>
+        }
+
+    </div>
+</div>

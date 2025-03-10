@@ -1,0 +1,25 @@
+﻿@page "/portfolio"
+
+@using DiegoG.WebTools.Data
+@using DiegoG.WebTools.Services
+@using DiegoG.WebTools.Components;
+@inject ItemCatalog<WorkInfoItem> Catalog
+
+<PageTitle>@Language.CurrentLanguage.SiteTitle | @Language.CurrentLanguage.MyWork</PageTitle>
+
+<div class="container work-catalog">
+    @foreach (var coll in Catalog.GroupAndEnumerateItems(2, true))
+    {
+        <div class="row">
+            @foreach (var item in coll)
+            {
+                <div class="col">
+                    @if (item is not null)
+                    {
+                        <WorkInfoView Item="item" />
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -10,11 +10,15 @@ public sealed class Language
 {
     public required string LanguageName { get; set; }
     public required string LanguageCode { get; init; }
+    public required HashSet<string>? AlternateLanguageCodes { get; init; }
     public required string AboutMeUri { get; init; }
     public required string AboutMe { get; init; }
+    public required string WelcomeMessage { get; init; }
     public required string CVUri { get; init; }
     public required string Home { get; init; }
     public required string QRCodeGen { get; init; }
+    public required string MyWork { get; init; }
+    public required string MyGigs { get; init; }
     public required string SiteTitle { get; init; }
     public required string ShortSiteTitle { get; init; }
     public required string QRContent { get; init; }
@@ -30,6 +34,8 @@ public sealed class Language
     public required string QRLogoOnCodeFeature { get; init; }
     public required string ContactMe { get; init; }
     public required string ContactMeans { get; init; }
+    public required string AveragePriceRange { get; init; }
+    public required string AveragePriceRangeDisclaimer { get; init; }
 }
 
 public static class AvailableLanguages
@@ -40,7 +46,9 @@ public static class AvailableLanguages
         {
             LanguageName = "Español",
             LanguageCode = "esp",
+            AlternateLanguageCodes = ["spa"],
             AboutMeUri = "https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/README-spanish.md",
+            WelcomeMessage = "Bienvenido a mi sitio web! Desarrollado enteramente por mi con C#, Blazor, CSS, HTML y JavaScript",
             AboutMe = "Sobre Mí",
             CVUri = "/Diego CV - ESPAÑOL - DEC24.pdf",
             Home = "Principal",
@@ -59,6 +67,10 @@ public static class AvailableLanguages
             NotFoundMessage = "Lo siento, no hay nada en esta dirección",
             ContactMe = "Contáctame!",
             ContactMeans = "Métodos de Contacto",
+            MyWork = "Mi Portafolio",
+            MyGigs = "Mis Servicios",
+            AveragePriceRange = "Rango de Precio Promedio",
+            AveragePriceRangeDisclaimer = "El precio puede variar según la aplicación y necesidades. Contácteme para mas información.",
 
             QRLogoOnCodeFeature = "Pronto podrás incluir una imagen en tu código QR!"
         };
@@ -67,7 +79,9 @@ public static class AvailableLanguages
         {
             LanguageName = "English",
             LanguageCode = "eng",
+            AlternateLanguageCodes = null,
             AboutMeUri = "https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/README.md",
+            WelcomeMessage = "Welcome to my website! Developed entirely by me with C#, Blazor, CSS, HTML and JavaScript",
             AboutMe = "About Me",
             CVUri = "/Diego CV - ENGLISH - DEC24.pdf",
             Home = "Home",
@@ -86,19 +100,28 @@ public static class AvailableLanguages
             NotFoundMessage = "Sorry, there's nothing at this address",
             ContactMe = "Contact Me!",
             ContactMeans = "Contact Means",
+            MyWork = "My Portfolio",
+            MyGigs = "My Services",
+            AveragePriceRange = "Average Price Range",
+            AveragePriceRangeDisclaimer = "Price may vary depending on application complexity. Contact me for further details.",
 
             QRLogoOnCodeFeature = "Logos on the QR code coming soon!"
         };
 
-        Languages = typeof(AvailableLanguages).GetProperties()
+        var langs = typeof(AvailableLanguages).GetProperties()
                                                   .Where(x => x.PropertyType == typeof(Language))
                                                   .Select(x => x.GetValue(null))
-                                                  .Cast<Language>()
-                                                  .ToFrozenDictionary(
-                                                      v => v.LanguageCode,
-                                                      k => k,
-                                                      StringComparer.OrdinalIgnoreCase
-                                                  );
+                                                  .Cast<Language>();
+        Dictionary<string, Language> langDict = [];
+        foreach (var lang in langs)
+        {
+            langDict.Add(lang.LanguageCode, lang);
+            if (lang.AlternateLanguageCodes is not null and { Count: > 0 })
+                foreach (var k in lang.AlternateLanguageCodes)
+                    langDict.Add(k, lang);
+        }
+
+        Languages = langDict.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
     }
 
     public static FrozenDictionary<string, Language> Languages { get; }

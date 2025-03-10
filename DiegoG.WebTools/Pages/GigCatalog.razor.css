@@ -1,0 +1,13 @@
+﻿.avg-sell-disclaimer {
+    color: lightgray;
+    font-style: italic;
+    text-align: center;
+}
+
+.gig-catalog .row .col {
+    margin: 10px;
+}
+
+.gig-catalog .row {
+    margin-bottom: 15px;
+}

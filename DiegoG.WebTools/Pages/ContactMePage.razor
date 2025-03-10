@@ -6,20 +6,20 @@
 <div>
     <table class="contact-means">
         <tbody>
-            @foreach (var meansColl in EnumerateContactMeans())
+            @foreach (var meansColl in catalog.GroupAndEnumerateItems())
             {
                 <tr>
                     @foreach (var means in meansColl)
                     {
                         <td class="highlightable contact-means-display-@((int)means.DisplayType)">
-                            <a href="@means.Uri" target="_blank" alt="@means.Alt">
+                            <a href="@means.Uri" target="_blank" alt="@means.DisplayName">
                                 @if (means.DisplayType is Data.MeansOfContact.DisplayDataType.HTML)
                                 {
                                     @((MarkupString)means.DisplayData)
                                 }
                                 else if (means.DisplayType is Data.MeansOfContact.DisplayDataType.Image)
                                 {
-                                    <img src="@means.DisplayData" width="16" height="16" alt="@means.Alt" />
+                                    <img src="@means.DisplayData" width="16" height="16" alt="@means.DisplayName" />
                                 }
                                 <span>‎ </span>@means.DisplayName
                             </a>

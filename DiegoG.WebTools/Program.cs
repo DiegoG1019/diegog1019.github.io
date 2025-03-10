@@ -1,8 +1,10 @@
+using Blazored.LocalStorage;
 using Blazored.Modal;
 using DiegoG.WebTools.Data;
 using DiegoG.WebTools.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using System.Reflection.Metadata;
 
 namespace DiegoG.WebTools;
 
@@ -20,10 +22,14 @@ public class Program
         builder.RootComponents.Add<App>("#app");
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
-        builder.Services.AddCascadingValue(sp => new LanguageProvider());
+        builder.Services.AddCascadingValue(sp => new LanguageProvider(sp.GetRequiredService<ILogger<LanguageProvider>>()));
         builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddItemCatalog<AppReference>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Apps.json");
         builder.Services.AddItemCatalog<MeansOfContact>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/ContactMeans.json");
+        builder.Services.AddItemCatalog<WorkInfoItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Portfolio.json");
+        builder.Services.AddItemCatalog<GigInfoItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/GigInfo.json");
+        builder.Services.AddScoped<ClientExposedExchangeRateApiClient>();
+        builder.Services.AddBlazoredLocalStorage();
         builder.Services.AddBlazoredModal();
 
 #if DEBUG

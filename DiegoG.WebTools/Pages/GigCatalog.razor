@@ -1,0 +1,25 @@
+﻿@page "/myserviceoffers"
+@using DiegoG.WebTools.Data
+@using DiegoG.WebTools.Services
+@using DiegoG.WebTools.Components;
+@inject ItemCatalog<GigInfoItem> Catalog
+
+<PageTitle>@Language.CurrentLanguage.SiteTitle | @Language.CurrentLanguage.MyGigs</PageTitle>
+
+<div class="container gig-catalog">
+    @foreach (var coll in Catalog.GroupAndEnumerateItems(2, true))
+    {
+        <div class="row">
+            @foreach (var item in coll)
+            {
+                <div class="col">
+                    @if (item is not null)
+                    {
+                        <GigInfoView Item="item" />
+                    }
+                </div>
+            }
+        </div>
+    }
+    <p class="avg-sell-disclaimer">* @Language.CurrentLanguage.AveragePriceRangeDisclaimer</p>
+</div>
