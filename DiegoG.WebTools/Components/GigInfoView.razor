@@ -1,8 +1,10 @@
 ﻿@using DiegoG.WebTools.Services;
 @using System.Globalization
+@using DiegoG.WebTools.Data;
 
 @inject ILogger<GigInfoView> logger
-@inject ClientExposedExchangeRateApiClient ExchangeRates
+@inject CachingApiClient<ExchangeRateInfo> ExchangeRates
+@inject CachingApiClient<IpInfo> IpInfo
 
 <div class="info-view" alt="@Item.Alt">
     <h4>@Item.LocalizedNames.GetLocalizedString(Language.CurrentLanguage)</h4>
@@ -18,7 +20,7 @@
         @if (TryGetExchangedBids(Item, out var excStarting, out var excEnding, out var currencyCode))
         {
             <p><span>@currencyCode @excStarting - @excEnding</span> *<br />
-            <span>USD @Item.StartingBidUSD.ToString("C", LanguageProvider.DefaultEnglishNumberFormatInfo) @Item.EndingBidUSD.ToString("C", LanguageProvider.DefaultEnglishNumberFormatInfo)</span> *</p>
+            <span>USD @Item.StartingBidUSD.ToString("C", LanguageProvider.DefaultEnglishNumberFormatInfo) - @Item.EndingBidUSD.ToString("C", LanguageProvider.DefaultEnglishNumberFormatInfo)</span> *</p>
         }
         else
         {

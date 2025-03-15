@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Runtime;
 
 namespace DiegoG.WebTools.Components;
 
@@ -17,8 +18,20 @@ public partial class GigInfoView
 
     public bool TryGetExchangedBids(decimal startingBid, decimal endingBid, out string exchangedStartingBid, out string exchangedEndingBid, out string currencyCode)
     {
-        var ri = new RegionInfo(CultureInfo.CurrentCulture.LCID);
-        logger.LogInformation("Obtained RegionInfo from current culture {cc}: {ri}/{cs}", CultureInfo.CurrentCulture.LCID, ri.Name, ri.ISOCurrencySymbol);
+        CultureInfo cu;
+        RegionInfo ri;
+        if (LocalIpInfo is null)
+        {
+            cu = CultureInfo.CurrentCulture;
+            ri = new RegionInfo(cu.LCID);
+            logger.LogInformation("Obtained RegionInfo from current culture {cn}|{cc}: {ri}/{ics}/{cs}", cu.Name, cu.LCID, ri.Name, ri.ISOCurrencySymbol, ri.CurrencySymbol);
+        }
+        else
+        {
+            cu = CultureInfo.GetCultureInfo(LocalIpInfo!.Country);
+            ri = new RegionInfo(cu.Name);
+            logger.LogInformation("Obtained RegionInfo from location culture {cn}|{cc}: {ri}/{ics}/{cs}", cu.Name, cu.LCID, ri.Name, ri.ISOCurrencySymbol, ri.CurrencySymbol);
+        }
 
         if (ri.ISOCurrencySymbol == "USD")
             logger.LogInformation("Current locale's currency is USD");
@@ -30,8 +43,8 @@ public partial class GigInfoView
         else
         {
             logger.LogInformation("Converted currency into {cs}", ri.ISOCurrencySymbol);
-            exchangedStartingBid = (startingBid * (decimal)conversion).ToString("C", CultureInfo.CurrentCulture);
-            exchangedEndingBid = (endingBid * (decimal)conversion).ToString("C", CultureInfo.CurrentCulture);
+            exchangedStartingBid = (startingBid * (decimal)conversion).ToString("n", cu);
+            exchangedEndingBid = (endingBid * (decimal)conversion).ToString("n", cu);
             currencyCode = ri.ISOCurrencySymbol;
             return true;
         }
@@ -42,23 +55,8 @@ public partial class GigInfoView
         return false;
     }
 
-    public bool TryGetExchangedValue(decimal value, out string exchanged)
-    {
-        var ri = new RegionInfo(CultureInfo.CurrentCulture.LCID);
-        
-        if (ExchangeRateInfo?.ConversionRates.TryGetValue(ri.ISOCurrencySymbol, out var conversion) is not true)
-        {
-            exchanged = value.ToString("C", CultureInfo.GetCultureInfo(1033));
-            return false;
-        }
-        else
-        {
-            exchanged = (value * (decimal)conversion).ToString("C", CultureInfo.GetCultureInfo(ri.ThreeLetterISORegionName));
-            return true;
-        }
-    }
-
     private ExchangeRateInfo? ExchangeRateInfo;
+    private IpInfo? LocalIpInfo;
 
     [Parameter]
     [field: AllowNull]
@@ -80,6 +78,14 @@ public partial class GigInfoView
     protected override async Task OnInitializedAsync()
     {
         ExchangeRateInfo = await ExchangeRates.FetchInfo();
+        try
+        {
+            LocalIpInfo = await IpInfo.FetchInfo();
+        }
+        catch (HttpRequestException)
+        {
+            logger.LogDebug("Could not obtain location info -- Maybe it was blocked?");
+        }
     }
 
     protected override void OnInitialized()

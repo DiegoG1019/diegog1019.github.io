@@ -2,6 +2,7 @@
 using DiegoG.WebTools.Services;
 using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
+using System.Runtime;
 
 namespace DiegoG.WebTools.Pages;
 

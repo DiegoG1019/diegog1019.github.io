@@ -28,7 +28,22 @@ public class Program
         builder.Services.AddItemCatalog<MeansOfContact>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/ContactMeans.json");
         builder.Services.AddItemCatalog<WorkInfoItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Portfolio.json");
         builder.Services.AddItemCatalog<GigInfoItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/GigInfo.json");
-        builder.Services.AddScoped<ClientExposedExchangeRateApiClient>();
+        builder.Services.AddScoped<CachingApiClient<ExchangeRateInfo>>(
+            s => new(
+                s.GetRequiredService<HttpClient>(),
+                s.GetRequiredService<ILocalStorageService>(),
+                s.GetRequiredService<ILogger<CachingApiClient<ExchangeRateInfo>>>(),
+                "https://v6.exchangerate-api.com/v6/973b33f470da8e5c1e1fb7a0/latest/USD"
+            )
+        );
+        builder.Services.AddScoped<CachingApiClient<IpInfo>>(
+            s => new(
+                s.GetRequiredService<HttpClient>(),
+                s.GetRequiredService<ILocalStorageService>(),
+                s.GetRequiredService<ILogger<CachingApiClient<IpInfo>>>(),
+                "https://ipinfo.io/?token=ad57862f90815e"
+            )
+        );
         builder.Services.AddBlazoredLocalStorage();
         builder.Services.AddBlazoredModal();
 

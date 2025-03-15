@@ -1,4 +1,7 @@
-﻿<CascadingBlazoredModal>
+﻿@using DiegoG.WebTools.Services;
+@using DiegoG.WebTools.Data;
+
+<CascadingBlazoredModal>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />

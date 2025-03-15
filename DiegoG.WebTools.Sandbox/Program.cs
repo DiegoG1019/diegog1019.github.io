@@ -10,6 +10,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine(JsonSerializer.Serialize(CultureInfo.CurrentCulture.NumberFormat, new JsonSerializerOptions() { WriteIndented = true }));
+        var json = "{\"ip\":\"190.158.88.2\",\"hostname\":\"dynamic-ip-190158882.cable.net.co\",\"city\":\"Medellín\",\"region\":\"Antioquia\",\"country\":\"CO\",\"loc\":\"6.2518,-75.5636\",\"org\":\"AS10620 Telmex Colombia S.A.\",\"postal\":\"050001\",\"timezone\":\"America/Bogota\"}";
+
+        var obj = JsonSerializer.Deserialize<IpInfo>(json);
     }
 }
