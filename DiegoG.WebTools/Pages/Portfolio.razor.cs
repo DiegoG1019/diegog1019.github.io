@@ -10,7 +10,7 @@ public partial class Portfolio
     [CascadingParameter]
     public LanguageProvider Language { get; set; }
 
-    public List<WorkInfoItem>? InfoItems;
+    public List<PortfolioItem>? InfoItems;
 
     protected override void OnInitialized()
     {

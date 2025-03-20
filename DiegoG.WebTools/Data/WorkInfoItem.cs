@@ -11,6 +11,12 @@ public class WorkInfoItem : ICatalogItem
     public List<MediaInfo>? AttachedMedia { get; init; }
 }
 
+public class PortfolioItem : WorkInfoItem
+{
+    public bool Secondary { get; init; }
+    public Dictionary<string, string>? LocalizedTag { get; init; }
+}
+
 public class GigQuestion
 {
     public Dictionary<string, string>? LocalizedQuestion { get; init; }

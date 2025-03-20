@@ -69,7 +69,7 @@ public class ItemCatalog<T>(HttpClient Http, ILogger<ItemCatalog<T>> logger, str
         return default;
     }
 
-    public IEnumerable<ArraySegment<T>> GroupAndEnumerateItems(int grouping = 2, bool fillInRow = false)
+    public IEnumerable<ArraySegment<T>> GroupAndEnumerateItems(int grouping = 2, bool fillInRow = false, Func<T, bool>? predicate = null)
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(grouping, 1);
 
@@ -80,7 +80,7 @@ public class ItemCatalog<T>(HttpClient Http, ILogger<ItemCatalog<T>> logger, str
 
         int idx = 0;
         T[] buffer = new T[grouping];
-        foreach (var item in items)
+        foreach (var item in (predicate is not null ? items.Where(predicate) : items))
         {
             if (item.Enabled)
             {

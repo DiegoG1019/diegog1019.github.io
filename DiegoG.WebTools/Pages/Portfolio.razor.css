@@ -5,3 +5,15 @@
 .work-catalog .row {
     margin-bottom: 15px;
 }
+
+.secondary-work-catalog .row .col {
+    margin: 6px;
+}
+
+.secondary-work-catalog .row {
+    margin-bottom: 10px;
+}
+
+.secondary-work-catalog * {
+    font-size: 13px;
+}

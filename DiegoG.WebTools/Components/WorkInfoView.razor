@@ -5,9 +5,10 @@
 
 <div class="info-view" alt="@Item.Alt">
     <h4>@Item.LocalizedNames.GetLocalizedString(Language.CurrentLanguage)</h4>
+    <span>@Item.LocalizedTag.GetLocalizedString(Language.CurrentLanguage)</span>
     <hr />
-    @foreach (var p in Item.LocalizedDescriptions.GetLocalizedString(Language.CurrentLanguage).SplitParagraphs())
+    @foreach (var p in Item.LocalizedDescriptions.GetLocalizedString(Language.CurrentLanguage).RenderMarkupLinks().SplitParagraphs())
     {
-        <p class="work-desc">@p</p>
+        <p class="work-desc">@((MarkupString)p)</p>
     }
 </div>

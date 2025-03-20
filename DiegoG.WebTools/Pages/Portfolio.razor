@@ -3,12 +3,12 @@
 @using DiegoG.WebTools.Data
 @using DiegoG.WebTools.Services
 @using DiegoG.WebTools.Components;
-@inject ItemCatalog<WorkInfoItem> Catalog
+@inject ItemCatalog<PortfolioItem> Catalog
 
 <PageTitle>@Language.CurrentLanguage.SiteTitle | @Language.CurrentLanguage.MyWork</PageTitle>
 
 <div class="container work-catalog">
-    @foreach (var coll in Catalog.GroupAndEnumerateItems(2, true))
+    @foreach (var coll in Catalog.GroupAndEnumerateItems(2, true, x => x.Secondary is false))
     {
         <div class="row">
             @foreach (var item in coll)
@@ -23,3 +23,21 @@
         </div>
     }
 </div>
+<br />
+<div class="container work-catalog secondary-work-catalog">
+    @foreach (var coll in Catalog.GroupAndEnumerateItems(3, true, x => x.Secondary is true))
+    {
+        <div class="row">
+            @foreach (var item in coll)
+            {
+                <div class="col">
+                    @if (item is not null)
+                    {
+                        <WorkInfoView Item="item" />
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+<br />

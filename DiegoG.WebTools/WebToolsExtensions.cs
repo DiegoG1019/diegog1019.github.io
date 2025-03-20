@@ -14,4 +14,7 @@ public static class WebToolsExtensions
             }
         yield return str.Substring(s, str.Length - s);
     }
+
+    public static string RenderMarkupLinks(this string str)
+        => Regexes.MarkUpLink.Replace(str, @"<a href=""$2"" target=""_blank"">$1</a>");
 }

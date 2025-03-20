@@ -26,7 +26,7 @@ public class Program
         builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddItemCatalog<AppReference>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Apps.json");
         builder.Services.AddItemCatalog<MeansOfContact>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/ContactMeans.json");
-        builder.Services.AddItemCatalog<WorkInfoItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Portfolio.json");
+        builder.Services.AddItemCatalog<PortfolioItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Portfolio.json");
         builder.Services.AddItemCatalog<GigInfoItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/GigInfo.json");
         builder.Services.AddScoped<CachingApiClient<ExchangeRateInfo>>(
             s => new(

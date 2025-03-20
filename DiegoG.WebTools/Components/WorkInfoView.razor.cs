@@ -14,7 +14,7 @@ public partial class WorkInfoView
 
     [Parameter]
     [field: AllowNull]
-    public WorkInfoItem Item
+    public PortfolioItem Item
     {
         get
         {
