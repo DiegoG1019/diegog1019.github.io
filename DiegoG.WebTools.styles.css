@@ -496,6 +496,18 @@ img.profile-pic[b-zrfed09nct] {
 .work-catalog .row[b-yvnyktkidm] {
     margin-bottom: 15px;
 }
+
+.secondary-work-catalog .row .col[b-yvnyktkidm] {
+    margin: 6px;
+}
+
+.secondary-work-catalog .row[b-yvnyktkidm] {
+    margin-bottom: 10px;
+}
+
+.secondary-work-catalog *[b-yvnyktkidm] {
+    font-size: 13px;
+}
 /* /Pages/QRCodeGeneratorTool.Razor.rz.scp.css */
 .input-container[b-bqrzgvjag7] {
     display: flex;
