@@ -12,6 +12,28 @@
     margin-right: 15px;
 }
 
+.regex-highlight {
+    background-color: darkgoldenrod;
+}
+
+textarea {
+    background-color: #090d12;
+    color: #6381af;
+    border: 0px solid;
+    border-radius: 5px;
+}
+
+.regex-block {
+    margin: .5rem;
+    padding: 2rem;
+    border: 2px solid #1f2d3d;
+    border-radius: 5px;
+}
+
+.tab-selected {
+    pointer-events: none;
+}
+
 .highlightable {
     transition: border ease-in-out 0.15s, height ease-in-out 0.15s, width ease-in-out 0.15s, color ease-in-out 0.15s, transform ease-in-out 0.15s;
 }

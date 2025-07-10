@@ -1,0 +1,29 @@
+﻿.regex-match {
+    padding: 20px;
+    border: 1px solid #192d3d;
+    border-radius: 15px;
+}
+
+.regex-result {
+    padding: 5px;
+    border-bottom: 4px solid #192d3d;
+    border-radius: 5px;
+}
+
+.regex-capture-group {
+    padding: 5px;
+    border-bottom: 2px solid #192d3d;
+    border-radius: 5px;
+}
+
+.regex-range {
+    font-weight: lighter;
+}
+
+.regex-capture {
+    padding: 5px;
+}
+
+.regex-group-name {
+    font-weight: bold;
+}

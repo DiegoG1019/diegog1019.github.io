@@ -1,6 +1,7 @@
 using Blazored.LocalStorage;
 using Blazored.Modal;
 using DiegoG.WebTools.Data;
+using DiegoG.WebTools.DTOs;
 using DiegoG.WebTools.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -24,6 +25,12 @@ public class Program
 
         builder.Services.AddCascadingValue(sp => new LanguageProvider(sp.GetRequiredService<ILogger<LanguageProvider>>()));
         builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+        builder.Services.AddSingleton<RegexOptionsModel>();
+        builder.Services.AddSingleton<TestRegexMatchModel>();
+        builder.Services.AddSingleton<TestRegexReplacementModel>();
+        builder.Services.AddSingleton<TestRegexSplitModel>();
+
         builder.Services.AddItemCatalog<AppReference>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Apps.json");
         builder.Services.AddItemCatalog<MeansOfContact>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/ContactMeans.json");
         builder.Services.AddItemCatalog<PortfolioItem>("https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/Portfolio.json");
