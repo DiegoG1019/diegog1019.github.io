@@ -2,6 +2,7 @@
 @using DiegoG.WebTools.Services
 
 @inject TestRegexMatchModel Model;
+@inject RegexOptionsModel RegexOptions;
 
 <div class="container">
     <div class="row regex-block">
@@ -15,12 +16,17 @@
         <label for="target">@Language.CurrentLanguage.RegexTarget</label>
         <InputTextArea id="target" @bind-Value="Model.Target" />
     </div>
-    <div class="row">
+    <div class="row regex-match-results">
         @if (Model.Matches?.Count is > 0)
         {
+            @Model.HighlightStylesHtml
             <h4>@Language.CurrentLanguage.RegexResult</h4>
             <div class="col regex-block">
-                @Model.HighlightedHtml
+                @{ var c = 0; }
+                @foreach (var ch in Model.Target!)
+                {
+                    <span class="regex-char" id="regex-match-char-@((c++).ToString())">@ch</span>
+                }
             </div>
             <div class="col regex-block">
                 @foreach (var match in Model.Matches.Cast<System.Text.RegularExpressions.Match>())
@@ -32,7 +38,7 @@
                         <div class="regex-capture-group">
                             @foreach (var capture in match.Groups.Values)
                             {
-                                <div class="regex-capture">
+                                <div class="regex-capture" id="regex-match-capture-@capture.Index-@capture.Length">
                                     <span class="regex-group-name">@capture.Name</span>: @capture.Value <span class="regex-range">(@capture.Index:@capture.Length)</span>
                                 </div>
                             }
@@ -66,6 +72,7 @@
     {
         base.OnInitialized();
         Language.PropertyChanged += Language_PropertyChanged;
+        RegexOptions.PropertyChanged += Language_PropertyChanged;
     }
 
     private void Language_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)

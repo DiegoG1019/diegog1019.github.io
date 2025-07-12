@@ -130,7 +130,7 @@ public static class AvailableLanguages
             RegexPage = "Regular Expressions",
             RegexExpression = "Regular Expression",
             RegexTarget = "Target String",
-            RegexResult = "Resultado",
+            RegexResult = "Results",
             RegexNoResult = "No matches"
         };
 

@@ -1,25 +1,28 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Components;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace DiegoG.WebTools.DTOs;
 
-public record struct MatchedTextRange(Range Range, bool IsHighlighted)
-{
-    [ThreadStatic]
-    private static StringBuilder? Sb;
+public record struct MatchedTextRange(Range Range, bool IsHighlighted);
 
-    public static StringBuilder GetRegexHighlighterBuilder() => (Sb ??= new()).Clear();
-}
-
-public sealed class TestRegexMatchModel(RegexOptionsModel options)
+public sealed class TestRegexMatchModel
 {
+    private readonly StringBuilder sb = new();
+
+    public TestRegexMatchModel(RegexOptionsModel options)
+    {
+        options.PropertyChanged += (sender, args) => Evaluate();
+    }
+    
     public string? Expression { get; set { field = value; Evaluate(); } }
     public string? Target { get; set { field = value; Evaluate(); } }
     public MatchCollection? Matches { get; private set; }
     public string? Error { get; private set; }
 
-    public MarkupString? HighlightedHtml { get; private set; }
+    public MarkupString? HighlightStylesHtml { get; private set; }
 
     private void Evaluate()
     {
@@ -36,36 +39,45 @@ public sealed class TestRegexMatchModel(RegexOptionsModel options)
             Matches = reg.Matches(Target);
             Error = null!;
 
-            List<MatchedTextRange> highlightRanges = new();
+            sb.Clear();
+            sb.Append("<style>");
 
-            var sb = MatchedTextRange.GetRegexHighlighterBuilder();
-            int? start = null;
-            foreach (var current in Matches.Cast<Match>())
+            foreach (var match in Matches.SelectMany(x => x.Groups.Values))
             {
-                if (start is not int st)
-                {
-                    int end = 0;
-                    foreach (var comparison in Matches.Cast<Match>())
-                    {
+                sb.Append("\n#regex-match-capture-")
+                    .Append(match.Index)
+                    .Append('-')
+                    .Append(match.Length)
+                    .Append(":hover {\n\tbackground-color: #1d2633; transform: scale(1.1, 1.1)\n}\n\n");
 
-                        if (comparison.Index >= current.Index && comparison.Index < GetEndIndex(current) && GetEndIndex(comparison) > end) 
-                            end = GetEndIndex(comparison);
-                    }
-
-                    sb.Append("<span class=\"regex-highlight\">").Append(current.ValueSpan).Append("</span>");
-                    start = end;
-                }
-                else
-                {
-                    if (current.Index > st)
-                    {
-                        start = null;
-                        sb.Append(Target.AsSpan(st, current.Index - 1));
-                    }
-                }
+                for (int i = 0; i < match.Length; i++)
+                    sb.Append("\nbody:has(#regex-match-capture-")
+                        .Append(match.Index)
+                        .Append('-')
+                        .Append(match.Length)
+                        .Append(":hover)")
+                        .Append(" #regex-match-char-").Append(match.Index + i).Append(" , ");
+                
+                sb.Remove(sb.Length - 3, 3);
+                    
+                sb.Append(" {\n\tbackground-color: #1d2633; border-bottom: 2px solid #273345 \n}\n\n");
             }
+            
+            sb.Append("</style>");
+            
+            HighlightStylesHtml = (MarkupString)sb.ToString();
 
-            HighlightedHtml = (MarkupString)sb.ToString();
+            /*
+             <style>
+                   #regex-match-capture-@capture.Index-@capture.Length:hover body:has(#regex-match-char-@((i + capture.Length).ToString())) {
+                       background-color: red;
+                   }
+
+                   #regex-match-capture-@capture.Index-@capture.Length:hover {
+                        background-color: red;
+                    }
+               </style>
+             */
         }
         catch(Exception e)
         {
@@ -135,9 +147,16 @@ public sealed class TestRegexReplacementModel(RegexOptionsModel options)
     }
 }
 
-public sealed class RegexOptionsModel
+public sealed class RegexOptionsModel : INotifyPropertyChanged
 {
-    public RegexOptions Options { get; set; }
+    public RegexOptions Options
+    {
+        get;
+        set
+        {
+            SetField(ref field, value);
+        }
+    }
 
     public RegexOptions EvaluationOptions
         => Options & ~(RegexOptions.Compiled);
@@ -272,5 +291,20 @@ public sealed class RegexOptionsModel
             else
                 Options &= ~RegexOptions.NonBacktracking;
         }
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        field = value;
+        OnPropertyChanged(propertyName);
+        return true;
     }
 }

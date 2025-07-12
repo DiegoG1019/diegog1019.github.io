@@ -1,7 +1,7 @@
 ﻿@page "/regex"
 @using DiegoG.WebTools.DTOs
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
-@inject IWebAssemblyHostEnvironment environment
+@inject IWebAssemblyHostEnvironment Environment
 @inject ILogger<RegexTester> Logger
 @inject RegexOptionsModel RegexOptions;
 
@@ -30,7 +30,7 @@
         <!-- Top Row, tabs -->
         <div class="tab col-sm">
             <button class="btn @DotNetEngineClass" @onclick="SetToDotNetRegex">
-                <img src="https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/dotnet.png" />
+                <img alt="dotnet regex engine" src="https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/dotnet.png" />
             </button>
         </div>
     </div>
