@@ -36,6 +36,14 @@ public sealed class Language
     public required string ContactMeans { get; init; }
     public required string AveragePriceRange { get; init; }
     public required string AveragePriceRangeDisclaimer { get; init; }
+    public required string RegexMatch { get; init; }
+    public required string RegexReplace { get; init; }
+    public required string RegexSplit { get; init; }
+    public required string RegexPage { get; init; }
+    public required string RegexExpression { get; init; }
+    public required string RegexResult { get; init; }
+    public required string RegexTarget { get; init; }
+    public required string RegexNoResult { get; init; }
 }
 
 public static class AvailableLanguages
@@ -72,7 +80,16 @@ public static class AvailableLanguages
             AveragePriceRange = "Rango de Precio Promedio",
             AveragePriceRangeDisclaimer = "El precio puede variar según la aplicación y necesidades. Contácteme para mas información.",
 
-            QRLogoOnCodeFeature = "Pronto podrás incluir una imagen en tu código QR!"
+            QRLogoOnCodeFeature = "Pronto podrás incluir una imagen en tu código QR!",
+
+            RegexMatch = "Encontrar",
+            RegexReplace = "Reemplazar",
+            RegexSplit = "Separar",
+            RegexPage = "Expresiones Regulares",
+            RegexExpression = "Expresión Regular",
+            RegexTarget = "Texto a Probar",
+            RegexResult = "Resultado",
+            RegexNoResult = "Sin resultados"
         };
 
         English = new Language()
@@ -105,7 +122,16 @@ public static class AvailableLanguages
             AveragePriceRange = "Average Price Range",
             AveragePriceRangeDisclaimer = "Price may vary depending on application complexity. Contact me for further details.",
 
-            QRLogoOnCodeFeature = "Logos on the QR code coming soon!"
+            QRLogoOnCodeFeature = "Logos on the QR code coming soon!",
+
+            RegexMatch = "Match",
+            RegexReplace = "Replace",
+            RegexSplit = "Split",
+            RegexPage = "Regular Expressions",
+            RegexExpression = "Regular Expression",
+            RegexTarget = "Target String",
+            RegexResult = "Results",
+            RegexNoResult = "No matches"
         };
 
         var langs = typeof(AvailableLanguages).GetProperties()

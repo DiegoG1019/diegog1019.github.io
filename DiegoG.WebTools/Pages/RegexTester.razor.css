@@ -1,0 +1,22 @@
+﻿.tab {
+    display:flex;
+    justify-content: center;
+}
+
+.match-panel-row > div {
+    margin: .5rem;
+    padding: 2rem;
+    border: 2px solid #1f2d3d;
+    border-radius: 5px;
+}
+
+.regex-option-check {
+    margin: .25rem 0;
+}
+
+.btn > img {
+    height: 3rem;
+    width: 3rem;
+    border: 2px solid #0070c2;
+    border-radius: 5px;
+}

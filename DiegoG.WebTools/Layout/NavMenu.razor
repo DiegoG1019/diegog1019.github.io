@@ -33,6 +33,11 @@
                 <span class="bi bi-qr-code-fill-nav-menu" aria-hidden="true"></span> @Language.CurrentLanguage.QRCodeGen
             </NavLink>
         </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="regex" Match="NavLinkMatch.All">
+                <span class="bi bi-regex-nav-menu" aria-hidden="true"></span> @Language.CurrentLanguage.RegexPage
+            </NavLink>
+        </div>
         @if (Apps.TryGetItems(out var apps))
         {
             @foreach (var app in apps)

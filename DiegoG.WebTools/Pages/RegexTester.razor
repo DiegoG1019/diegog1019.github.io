@@ -1,0 +1,140 @@
+﻿@page "/regex"
+@using DiegoG.WebTools.DTOs
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@inject IWebAssemblyHostEnvironment Environment
+@inject ILogger<RegexTester> Logger
+@inject RegexOptionsModel RegexOptions;
+
+<PageTitle>@Language.CurrentLanguage.SiteTitle | @Language.CurrentLanguage.QRCodeGen</PageTitle>
+
+<div class="container"> <!-- Grid -->
+    <div class="row"> <!-- Top Row, tabs -->
+        <div class="tab col-sm">
+            <button class="btn @MatchTabClass" @onclick="SetToMatch">
+                @Language.CurrentLanguage.RegexMatch
+            </button>
+        </div>
+        <div class="tab col-sm">
+            <button class="btn @ReplaceTabClass" @onclick="SetToReplace">
+                @Language.CurrentLanguage.RegexReplace
+            </button>
+        </div>
+        <div class="tab col-sm">
+            <button class="btn @SplitTabClass" @onclick="SetToSplit">
+                @Language.CurrentLanguage.RegexSplit
+            </button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <!-- Top Row, tabs -->
+        <div class="tab col-sm">
+            <button class="btn @DotNetEngineClass" @onclick="SetToDotNetRegex">
+                <img alt="dotnet regex engine" src="https://raw.githubusercontent.com/DiegoG1019/DiegoG1019/refs/heads/main/dotnet.png" />
+            </button>
+        </div>
+    </div>
+    <hr />
+    <div class="row match-panel-row">
+        <div class="col-9">
+            @if (IsMatch)
+            {
+                <h3>@Language.CurrentLanguage.RegexMatch</h3>
+                <hr/>
+                <DiegoG.WebTools.Pages.RegexTesterScreens.Match/>
+            }
+            else if (IsReplace)
+            {
+                <h3>@Language.CurrentLanguage.RegexReplace</h3>
+                <hr/>
+                <DiegoG.WebTools.Pages.RegexTesterScreens.Replace />
+            }
+            else if (IsSplit)
+            {
+                <h3>@Language.CurrentLanguage.RegexSplit</h3>
+                <hr/>
+                <DiegoG.WebTools.Pages.RegexTesterScreens.Split />
+            }
+        </div>
+
+        <div class="col-sm">
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.None" @bind-value="RegexOptions.None" />
+                <label class="form-check-label" for="RegexOptions.None"> 
+                    None
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.IgnoreCase" @bind-value="RegexOptions.IgnoreCase" />
+                <label class="form-check-label" for="RegexOptions.IgnoreCase"> 
+                    IgnoreCase
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.Multiline" @bind-value="RegexOptions.Multiline" />
+                <label class="form-check-label" for="RegexOptions.Multiline"> 
+                    Multiline
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.ExplicitCapture" @bind-value="RegexOptions.ExplicitCapture" />
+                <label class="form-check-label" for="RegexOptions.ExplicitCapture"> 
+                    ExplicitCapture
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.Compiled" @bind-value="RegexOptions.Compiled" />
+                <label class="form-check-label" for="RegexOptions.Compiled"> 
+                    Compiled
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.Singleline" @bind-value="RegexOptions.Singleline" />
+                <label class="form-check-label" for="RegexOptions.Singleline"> 
+                    Singleline
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.IgnorePatternWhitespace" @bind-value="RegexOptions.IgnorePatternWhitespace" />
+                <label class="form-check-label" for="RegexOptions.IgnorePatternWhitespace"> 
+                    IgnorePatternWhitespace
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.RightToLeft" @bind-value="RegexOptions.RightToLeft" />
+                <label class="form-check-label" for="RegexOptions.RightToLeft"> 
+                    RightToLeft
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.ECMAScript" @bind-value="RegexOptions.ECMAScript" />
+                <label class="form-check-label" for="RegexOptions.ECMAScript"> 
+                    ECMAScript
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.CultureInvariant" @bind-value="RegexOptions.CultureInvariant" />
+                <label class="form-check-label" for="RegexOptions.CultureInvariant"> 
+                    CultureInvariant
+                </label>
+            </div>
+
+            <div class="regex-option-check">
+                <input class="form-check-input" type="checkbox" id="RegexOptions.NonBacktracking" @bind-value="RegexOptions.NonBacktracking" />
+                <label class="form-check-label" for="RegexOptions.NonBacktracking"> 
+                    NonBacktracking
+                </label>
+            </div>
+
+        </div>
+    </div>
+</div>

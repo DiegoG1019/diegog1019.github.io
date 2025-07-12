@@ -1,0 +1,82 @@
+﻿@using DiegoG.WebTools.DTOs
+@using DiegoG.WebTools.Services
+
+@inject TestRegexMatchModel Model;
+@inject RegexOptionsModel RegexOptions;
+
+<div class="container">
+    <div class="row regex-block">
+        <label for="expr">@Language.CurrentLanguage.RegexExpression</label>
+        <InputTextArea id="expr" @bind-Value="Model.Expression" />
+        <div class="error-container">
+            <span class="error-msg">@Error</span>
+        </div>
+    </div>
+    <div class="row regex-block">
+        <label for="target">@Language.CurrentLanguage.RegexTarget</label>
+        <InputTextArea id="target" @bind-Value="Model.Target" />
+    </div>
+    <div class="row regex-match-results">
+        @if (Model.Matches?.Count is > 0)
+        {
+            @Model.HighlightStylesHtml
+            <h4>@Language.CurrentLanguage.RegexResult</h4>
+            <div class="col regex-block">
+                @{ var c = 0; }
+                @foreach (var ch in Model.Target!)
+                {
+                    <span class="regex-char" id="regex-match-char-@((c++).ToString())">@ch</span>
+                }
+            </div>
+            <div class="col regex-block">
+                @foreach (var match in Model.Matches.Cast<System.Text.RegularExpressions.Match>())
+                {
+                    <div class="regex-match">
+                        <div class="regex-result">
+                            @match.Value <span class="regex-range">(@match.Index:@match.Length)</span>
+                        </div>
+                        <div class="regex-capture-group">
+                            @foreach (var capture in match.Groups.Values)
+                            {
+                                <div class="regex-capture" id="regex-match-capture-@capture.Index-@capture.Length">
+                                    <span class="regex-group-name">@capture.Name</span>: @capture.Value <span class="regex-range">(@capture.Index:@capture.Length)</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h4>@Language.CurrentLanguage.RegexNoResult</h4>
+        }
+    </div>
+</div>
+
+@code {
+    private string Error
+    {
+        get;
+        set
+        {
+            field = value;
+            StateHasChanged();
+        }
+    }
+
+    [CascadingParameter]
+    public LanguageProvider Language { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Language.PropertyChanged += Language_PropertyChanged;
+        RegexOptions.PropertyChanged += Language_PropertyChanged;
+    }
+
+    private void Language_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+}
