@@ -11,9 +11,11 @@ public record struct MatchedTextRange(Range Range, bool IsHighlighted);
 public sealed class TestRegexMatchModel
 {
     private readonly StringBuilder sb = new();
+    private readonly RegexOptionsModel options;
 
     public TestRegexMatchModel(RegexOptionsModel options)
     {
+        this.options = options;
         options.PropertyChanged += (sender, args) => Evaluate();
     }
     
