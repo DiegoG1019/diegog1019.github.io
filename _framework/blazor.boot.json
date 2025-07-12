@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "DiegoG.WebTools",
   "resources": {
-    "hash": "sha256-3UC9R8RZyTgdLxnIj7td4UOw98fkrmzwts1t+5O3+Ek=",
+    "hash": "sha256-Y6b+m/eLzEcL9DxUR6LS+jOBqFMFO/ohN9A2JpD5wEM=",
     "fingerprinting": {
       "Blazored.LocalStorage.12n6dz54qr.wasm": "Blazored.LocalStorage.wasm",
       "Blazored.Modal.h7t7ava08f.wasm": "Blazored.Modal.wasm",
@@ -63,7 +63,7 @@
       "System.Xml.XDocument.u95h2n7mh7.wasm": "System.Xml.XDocument.wasm",
       "System.wznexm8bk2.wasm": "System.wasm",
       "System.Private.CoreLib.yp9zdivd6r.wasm": "System.Private.CoreLib.wasm",
-      "DiegoG.WebTools.dh35usd1j1.wasm": "DiegoG.WebTools.wasm",
+      "DiegoG.WebTools.5xtpbp9z9k.wasm": "DiegoG.WebTools.wasm",
       "dotnet.native.9zlpwida0q.js": "dotnet.native.js",
       "dotnet.native.7gq1obdgc1.wasm": "dotnet.native.wasm",
       "dotnet.js": "dotnet.js",
@@ -149,7 +149,7 @@
       "System.Xml.Linq.hvxjxkvtb2.wasm": "sha256-wwxsYRpXsPfLkFVXXX9uditc29XXKjAFv10/9OYAhf8=",
       "System.Xml.XDocument.u95h2n7mh7.wasm": "sha256-8iJ0awg0+x18I0ncR/TywqyPlwvLvfssiVm8X9ErqhE=",
       "System.wznexm8bk2.wasm": "sha256-/Imz/Enqa2AZc4T3k/CqtsM6674KRN9OUtvK4Nokhew=",
-      "DiegoG.WebTools.dh35usd1j1.wasm": "sha256-H4F4kAflnG/Dhi4Xe7s4seyg1PZUelwPVNzuBux3BB0="
+      "DiegoG.WebTools.5xtpbp9z9k.wasm": "sha256-R13GOczVxZrkm5vTIYnFZJy5JS1AC9LUi711GmwY1PQ="
     }
   },
   "cacheBootResources": true,
